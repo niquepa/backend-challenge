@@ -1,0 +1,15 @@
+ENV_FROM_APPLICATION_YML: "true"
+
+development:
+  DB_SCHEMA:             "backend_challenge_development"
+  DB_PORT:               "32768"
+  DB_USER_NAME:          "postgres"
+  DB_PASSWORD:           "postgres"
+  DB_HOST:               "localhost"
+
+test:
+  DB_SCHEMA:             "backend_challenge_test"
+  DB_PORT:               "32768"
+  DB_USER_NAME:          "postgres"
+  DB_PASSWORD:           "postgres"
+  DB_HOST:               "localhost"
