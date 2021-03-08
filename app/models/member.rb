@@ -4,4 +4,6 @@ class Member < ApplicationRecord
   validates :url, length: (1..255), uniqueness: true, url: true
   validates :short_url, length: (0..255), allow_blank: true
 
+  has_many :headings, dependent: :destroy
+  
 end

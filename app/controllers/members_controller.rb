@@ -20,12 +20,13 @@ class MembersController < ApplicationController
     @member.short_url = ShortenUrl.call(@member.url)
 
     if @member.save
+      CreateMemberHeadings.call(@member)
       render json: @member, status: :created, location: @member
     else
       render json: @member.errors, status: :unprocessable_entity
     end
 
-  rescue ShortenUrlException => e
+  rescue ShortenUrlException, CreateMemberHeadingsException => e
     render json: { errors: e.message }, status: :unprocessable_entity
   end
 
@@ -33,7 +34,10 @@ class MembersController < ApplicationController
   def update
     
     if @member.update(member_params)
-      @member.short_url = ShortenUrl.call(@member.url) if @member.url_changed?
+      if @member.url_changed?
+        @member.short_url = ShortenUrl.call(@member.url)
+        CreateMemberHeadings.call(@member)
+        end
       render json: @member
     else
       render json: @member.errors, status: :unprocessable_entity
