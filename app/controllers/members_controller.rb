@@ -46,6 +46,7 @@ class MembersController < ApplicationController
 
   # DELETE /members/1
   def destroy
+    Friendship.where('friend_id = ?', @member.id).destroy_all
     @member.destroy
   end
 

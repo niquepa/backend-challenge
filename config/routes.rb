@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :members do
+    resources :friendships
     member do
       get 'headings'
       put 'headings', to: 'members#update_headings' # re-generate headings
