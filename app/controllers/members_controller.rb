@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :update, :destroy]
+  before_action :set_member, only: [:show, :update, :destroy, :headings, :update_headings]
 
   # GET /members
   def index
@@ -47,6 +47,20 @@ class MembersController < ApplicationController
   # DELETE /members/1
   def destroy
     @member.destroy
+  end
+
+  def headings
+    headings = @member.headings
+    render json: headings
+  end
+
+  def update_headings
+    @member.headings.destroy_all
+    CreateMemberHeadings.call(@member)
+    set_member
+    render json: @member
+  rescue CreateMemberHeadingsException => e
+    render json: { errors: e.message }, status: :unprocessable_entity
   end
 
   private
