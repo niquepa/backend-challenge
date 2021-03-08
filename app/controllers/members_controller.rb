@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
 
-    render json: @members
+    render json: @members, each_serializer: MembersSerializer
   end
 
   # GET /members/1
