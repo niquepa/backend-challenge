@@ -1,4 +1,5 @@
 ENV_FROM_APPLICATION_YML: "true"
+BITLY_TOKEN: a998ad1a38cb580d09cc6789b3a3460c82e1c65c
 
 development:
   DB_SCHEMA:             "backend_challenge_development"

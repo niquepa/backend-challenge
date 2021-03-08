@@ -1,0 +1,2 @@
+ class ShortenUrlException < BaseException
+ end
