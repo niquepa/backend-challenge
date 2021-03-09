@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :update, :destroy, :headings, :update_headings]
+  before_action :set_member, only: [:show, :update, :destroy, :headings, :update_headings, :find_experts]
 
   # GET /members
   def index
@@ -50,6 +50,13 @@ class MembersController < ApplicationController
     @member.destroy
   end
 
+  def find_experts
+    experts = FindExpert.call(@member, params[:topic])
+    render json: experts, each_serializer: ExpertsSerializer
+  rescue FindExpertsException::InvalidArgumentsException => e
+    render json: { errors: e.message }, status: :unprocessable_entity
+  end
+
   def headings
     headings = @member.headings
     render json: headings
@@ -76,4 +83,5 @@ class MembersController < ApplicationController
         require_params.require([:name, :url])
       end
     end
+
 end

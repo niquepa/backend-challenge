@@ -2,8 +2,16 @@
 
 one:
   member: one
-  text: MyText
+  text: Dog breeding in Ukraine
 
 two:
   member: two
-  text: MyText
+  text: Dog breeding in USA
+
+three:
+  member: three
+  text: Dog breeding in Japan
+
+four:
+  member: four
+  text: Dog breeding in Colombia

@@ -11,3 +11,7 @@ two:
 three:
   member: five
   friend: one
+
+four:
+  member: five
+  friend: two
