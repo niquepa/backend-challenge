@@ -1,0 +1,2 @@
+class CreateMemberHeadingsException < BaseException
+end
