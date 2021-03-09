@@ -2,8 +2,12 @@
 
 one:
   member: one
-  friend: one
+  friend: three
 
 two:
-  member: two
-  friend: two
+  member: three
+  friend: four
+
+three:
+  member: five
+  friend: one
